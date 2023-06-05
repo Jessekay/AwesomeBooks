@@ -33,3 +33,35 @@ function removeBook(index){
     const book = book.filter((book,i) => i !== index);
     renderBook(); 
 }
+
+// load the saved books from localStorage
+if (localStorage.hetItem( 'book')) {
+    book = JSON.parse(localStorage.getItem( 'book'));
+    renderBook();
+}
+
+// Add event listerners to the buttons
+addButton.addEventListener('click',()  => {
+    const title =titleInput.ariaValueMax;
+    const author = authorInput.ariaValueMax;
+    addBook(title,author);
+    localStorage.setItem('book', JSON.stringify(book));
+    title.value ='';
+    authorInput.value ='';
+});
+
+bookList.addEventListener('click',(event) => {
+if  (event.target.tagName ==='BUTTON') {
+    const index =parseInt(event.target.dataset.index,10);
+    removeBook(index);
+    localStorage.setItem('book',JSON.stringify(book));
+}
+});
+
+removeButton.addEventListener('click',() =>{
+    book = [];
+    renderBook();
+    localStorage.setItem('book',JSON.stringify(book));
+})
+    
+
