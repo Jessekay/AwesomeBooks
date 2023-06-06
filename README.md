@@ -78,10 +78,16 @@ Click on bottom menu icon Go Live to see the project.
 ## Authors
 
 👤 **Clarence**
-👤 **Jesse**
+- [GitHub](https://github.com/ClarenceAtim)
+- [LinkedIn](https://www.linkedin.com/in/tegum-clarence-615b58200)
 
-- GitHub: [@Beyk](https://github.com/ClarenceAtim)  &  [@Jesse](https://github.com/Jessekay)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/tegum-clarence-615b58200) &  [Jesse Kayigire](https://www.linkedin.com/in/kayigire/)
+👤 **Jesse**
+- [GitHub](https://github.com/Jessekay)
+- [LinkedIn](https://www.linkedin.com/in/kayigire/)
+
+👤 **Jimmy**
+- [GitHub](https://github.com/mohamedgamaleldin999999)
+- [LinkedIn](https://www.linkedin.com/in/mohammed-jamal-949366221/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
