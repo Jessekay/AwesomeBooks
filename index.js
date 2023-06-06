@@ -1,10 +1,14 @@
-
 // define the book collection
 let books = [];
+
+// de5fine the book collection
+const book = [];
+
 
 // Get HTML elements
 const bookList = document.getElementById('book-list');
 const addBookForm = document.getElementById('add-book-form');
+
 
 // Function to remove a book from the collection
 function removeBook(index) {
@@ -60,3 +64,47 @@ renderBookList();
 document.querySelector('form').addEventListener('submit', () => {
   this.reset();
 });
+
+function addBook(title, author) {
+  const book = { title, author };
+  book.push(book);
+  renderBook();
+}
+
+// remove a book from the collection
+
+function removeBook(index) {
+  const book = book.filter((books, i) => i !== index);
+  renderBook();
+}
+
+// load the saved books from localStorage
+if (localStorage.hetItem('book')) {
+  book = JSON.parse(localStorage.getItem('book'));
+  renderBook();
+}
+
+// Add event listerners to the buttons
+addButton.addEventListener('click', () => {
+  const title = titleInput.ariaValueMax;
+  const author = authorInput.ariaValueMax;
+  addBook(title, author);
+  localStorage.setItem('book', JSON.stringify(book));
+  title.value = '';
+  authorInput.value = '';
+});
+
+bookList.addEventListener('click', (event) => {
+  if (event.target.tagName === 'BUTTON') {
+    const index = parseInt(event.target.dataset.index, 10);
+    removeBook(index);
+    localStorage.setItem('book', JSON.stringify(book));
+  }
+});
+
+removeButton.addEventListener('click', () => {
+  book = [];
+  renderBook();
+  localStorage.setItem('book', JSON.stringify(book));
+});
+
