@@ -13,14 +13,11 @@ function removeBook(index) {
 
 // Function to render the book list
 function renderBookList() {
-  // Clear the book list
   bookList.innerHTML = '';
-  // Loop through the book array and create a new list item for each book
   books.forEach((book, index) => {
     const li = document.createElement('p');
-    li.innerHTML = `${book.title} <br> ${book.author} <br> `;
+    li.innerHTML = `${book.title} by ${book.author} <br> `;
     bookList.appendChild(li);
-    // Add the book index as a data attribute to the list item for later use
     li.dataset.index = index;
     const p = document.createElement('hr');
 
