@@ -1,6 +1,4 @@
-
 // book classes
-
 class BookCollection {
   constructor() {
     this.books = [];
@@ -24,7 +22,7 @@ class BookCollection {
     this.books.push({ title, author });
     this.updateLocalStorage();
   }
-  
+
   removeBook(index) {
     this.books = this.books.filter((book, i) => i !== index);
     this.updateLocalStorage();
@@ -36,10 +34,10 @@ class BookCollection {
       li.innerHTML = `${book.title} by ${book.author} <br> `;
       this.bookList.appendChild(li);
       li.dataset.index = index;
-  
+
       const hr = document.createElement('hr');
       li.appendChild(hr);
-  
+
       const removeButton = document.createElement('button');
       removeButton.innerHTML = 'Remove';
       removeButton.addEventListener('click', () => {
@@ -50,11 +48,11 @@ class BookCollection {
       li.appendChild(removeButton);
     });
   }
-  
+
   resetForm() {
     this.addBookForm.reset();
   }
-  
+
   updateLocalStorage() {
     localStorage.setItem('books', JSON.stringify(this.books));
   }
