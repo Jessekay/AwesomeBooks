@@ -8,6 +8,7 @@ class BookCollection {
     this.authorInput = document.getElementById('author-input');
 
     this.addBookForm.addEventListener('submit', this.handleAddBook.bind(this));
+    this.getFromLocalStorage();
     this.renderBookList();
   }
 
@@ -58,6 +59,12 @@ class BookCollection {
 
   updateLocalStorage() {
     localStorage.setItem('books', JSON.stringify(this.books));
+  }
+  getFromLocalStorage() {
+    const storedBooks = localStorage.getItem('books');
+    if (storedBooks !== null) {
+      this.books = JSON.parse(storedBooks);
+    }
   }
 }
 const bookCollection = new BookCollection();
