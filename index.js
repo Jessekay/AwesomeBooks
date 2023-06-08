@@ -8,10 +8,25 @@ class BookCollection {
     this.addBookForm.addEventListener('submit', this.handleAddBook.bind(this));
   }
 
+<<<<<<< HEAD
   handleRemoveBook(event) {
     const { index } = event.target.parentNode.dataset;
     this.removeBook(index);
     this.renderBookList();
+=======
+  handleAddBook(event) {
+    event.preventDefault();
+    const title = this.titleInput.value;
+    const author = this.authorInput.value;
+    this.addBook(title, author);
+    this.renderBookList();
+    this.resetForm();
+  }
+
+  addBook(title, author) {
+    this.books.push({ title, author });
+    this.updateLocalStorage();
+>>>>>>> ed9b1ded065f31d4abc3ebbbcd220f8699a9bad8
   }
 
   removeBook(index) {
