@@ -107,7 +107,7 @@ Contributions, issues, and feature requests are welcome!
 
 ## ⭐️ Show your support <a name="support"></a>
 
-Give a star if you like this project!
+Give a star  to this pro6ject if you like it!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
