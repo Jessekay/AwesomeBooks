@@ -117,3 +117,7 @@ We would like to thank Microverse for allowing us to work on this project
 It's a good experience, we can't express how we feel after learning and implementing what we learned in this Awesome Books project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](/LICENSE) licensed.
