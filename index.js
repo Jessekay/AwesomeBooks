@@ -47,8 +47,8 @@ class BookCollection {
         this.renderBookList();
       });
       li.appendChild(removeButton);
-      if(index % 2 === 1){
-        li.classList.add("white")
+      if (index % 2 === 1) {
+        li.classList.add('white');
       }
     });
   }
@@ -60,6 +60,7 @@ class BookCollection {
   updateLocalStorage() {
     localStorage.setItem('books', JSON.stringify(this.books));
   }
+
   getFromLocalStorage() {
     const storedBooks = localStorage.getItem('books');
     if (storedBooks !== null) {
