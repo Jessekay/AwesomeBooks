@@ -34,12 +34,9 @@ class BookCollection {
     this.bookList.innerHTML = '';
     this.books.forEach((book, index) => {
       const li = document.createElement('p');
-      li.innerHTML = `${book.title} by ${book.author} <br> `;
+      li.innerHTML = `"${book.title}" by ${book.author} <br> `;
       this.bookList.appendChild(li);
       li.dataset.index = index;
-
-      const hr = document.createElement('hr');
-      li.appendChild(hr);
 
       const removeButton = document.createElement('button');
       removeButton.innerHTML = 'Remove';
