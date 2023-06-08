@@ -46,6 +46,9 @@ class BookCollection {
         this.renderBookList();
       });
       li.appendChild(removeButton);
+      if(index % 2 === 1){
+        li.classList.add("white")
+      }
     });
   }
 

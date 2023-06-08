@@ -9,6 +9,10 @@
   margin-bottom: 30px;
 }
 
+.white {
+  background-color: white;
+}
+
 .top {
   width: 100px;
   height: 2px;
@@ -50,5 +54,5 @@ p {
   justify-content: space-between;
   background-color: lightgray;
   margin: 0;
-  padding: 5px;
+  padding: 10px;
 }
