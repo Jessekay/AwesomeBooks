@@ -10,6 +10,7 @@ class BookCollection {
     this.addBookForm.addEventListener('submit', this.handleAddBook.bind(this));
     this.renderBookList();
   }
+
   handleAddBook(event) {
     event.preventDefault();
     const title = this.titleInput.value;
@@ -18,6 +19,7 @@ class BookCollection {
     this.renderBookList();
     this.resetForm();
   }
+
   addBook(title, author) {
     this.books.push({ title, author });
     this.updateLocalStorage();
@@ -27,6 +29,7 @@ class BookCollection {
     this.books = this.books.filter((book, i) => i !== index);
     this.updateLocalStorage();
   }
+
   renderBookList() {
     this.bookList.innerHTML = '';
     this.books.forEach((book, index) => {
@@ -41,7 +44,7 @@ class BookCollection {
       const removeButton = document.createElement('button');
       removeButton.innerHTML = 'Remove';
       removeButton.addEventListener('click', () => {
-        const index = parseInt(li.dataset.index);
+        const index = parseInt(li.dataset.index, 10);
         this.removeBook(index);
         this.renderBookList();
       });
@@ -58,3 +61,4 @@ class BookCollection {
   }
 }
 const bookCollection = new BookCollection();
+console.log(bookCollection.books.length);
