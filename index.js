@@ -44,7 +44,7 @@ class BookCollection {
       const removeButton = document.createElement('button');
       removeButton.innerHTML = 'Remove';
       removeButton.addEventListener('click', () => {
-        const index = parseInt(li.dataset.index);
+        const index = parseInt(li.dataset.index, 10);
         this.removeBook(index);
         this.renderBookList();
       });
