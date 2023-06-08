@@ -57,4 +57,3 @@ class BookCollection {
     localStorage.setItem('books', JSON.stringify(this.books));
   }
 }
-const bookCollection = new BookCollection();
