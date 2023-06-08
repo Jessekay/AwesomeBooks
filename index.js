@@ -61,3 +61,4 @@ class BookCollection {
   }
 }
 const bookCollection = new BookCollection();
+bookCollection.resetForm();
