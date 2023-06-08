@@ -57,4 +57,5 @@ class BookCollection {
     localStorage.setItem('books', JSON.stringify(this.books));
   }
 }
-new BookCollection();
+const bookCollection = new BookCollection();
+bookCollection.resetForm();
