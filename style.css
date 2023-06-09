@@ -1,79 +1,122 @@
-.title {
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+}
+
+.container {
+  margin-top: 20px;
   display: flex;
-  width: 100%;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
 }
 
-#book-list {
-  border: 2px solid black;
-  margin-bottom: 30px;
+.book {
+  padding: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  flex-basis: calc(33.33% - 20px);
+  display: flex;
+  justify-content: space-between;
 }
 
-.white {
-  background-color: white;
+.book h3 {
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
-.top {
-  width: 100px;
-  height: 2px;
-  background-color: black;
-  border-radius: 4px;
+.book p {
+  margin: 0;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.book button {
+  margin-top: 10px;
+  padding: 5px 10px;
 }
 
 form {
-  align-self: center;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.margin {
-  margin: 5px;
+input[type="text"] {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 200px;
+  border: 3px solid black;
 }
 
-input {
-  width: 230px;
+button[type="submit"] {
+  padding: 5px 10px;
+  position: relative;
+  margin-left: 132px;
+}
+
+#book-list {
   border: 2px solid black;
+  display: none;
 }
 
-button {
-  margin: 0;
-  border: 2px solid black;
-}
+.book:nth-child(even) { background-color: white; }
 
-.btn {
-  width: 235px;
+header {
   display: flex;
-  justify-content: right;
-  padding-top: 5px;
-}
-
-p {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  background-color: lightgray;
-  margin: 0;
-  padding: 10px;
+  border: 2px solid black;
 }
 
-.nav-bar {
- display: flex;
- flex-direction: row;
- border: 2px solid black;
- justify-content: space-between;
- align-items: center;
- padding: 0 5% 0 5%;
-}
-
-.navlist {
+header ul {
+  list-style-type: none;
   display: flex;
-  flex-direction: row;
-  list-style: none;
 }
 
-.nav-item {
-  cursor: pointer;
+header ul li a {
+  padding: 0 15px;
+  margin: 10px 0;
+  text-decoration: none;
+  color: black;
+}
+
+#addBookForm {
+  display: none;
+}
+
+h2 {
   text-align: center;
-  padding: 5%;
+}
+
+#heading1 {
+  display: none;
+}
+
+.contact {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#list {
+  border-right: 2px solid black;
+}
+
+#add {
+  border-right: 2px solid black;
+}
+
+footer {
+  border: 2px solid black;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 95%;
+  margin: 10px;
 }
