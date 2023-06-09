@@ -1,12 +1,3 @@
-// Book class
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-  }
-}
-
-// Library class
 class Library {
   static getBooks() {
     const books = JSON.parse(localStorage.getItem('books'));
@@ -21,7 +12,10 @@ class Library {
 
   static removeBook(book) {
     let books = Library.getBooks();
-    books = books.filter((currentBook) => !(currentBook.title === book.title && currentBook.author === book.author));
+    books = books.filter(
+      (currentBook) =>
+        !(currentBook.title === book.title && currentBook.author === book.author)
+    );
     localStorage.setItem('books', JSON.stringify(books));
   }
 
@@ -66,6 +60,13 @@ class Library {
       Library.removeBook(book);
       Library.displayBooks();
     }
+  }
+}
+
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
 }
 
