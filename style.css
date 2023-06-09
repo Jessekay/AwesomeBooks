@@ -56,3 +56,24 @@ p {
   margin: 0;
   padding: 10px;
 }
+
+.nav-bar {
+ display: flex;
+ flex-direction: row;
+ border: 2px solid black;
+ justify-content: space-between;
+ align-items: center;
+ padding: 0 5% 0 5%;
+}
+
+.navlist {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.nav-item {
+  cursor: pointer;
+  text-align: center;
+  padding: 5%;
+}
