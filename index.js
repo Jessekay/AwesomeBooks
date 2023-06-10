@@ -125,7 +125,7 @@ contact.addEventListener('click', (e) => {
   heading.style.display = 'none';
 });
 
-const date = document.getElementById('date')
+const date = document.getElementById('date');
 date.innerHTML = new Date().toLocaleString('en-US', {
   month: 'long',
   day: 'numeric',
@@ -133,5 +133,5 @@ date.innerHTML = new Date().toLocaleString('en-US', {
   hour: 'numeric',
   minute: 'numeric',
   second: 'numeric',
-  hour12: true
+  hour12: true,
 });
