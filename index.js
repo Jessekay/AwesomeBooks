@@ -124,3 +124,14 @@ contact.addEventListener('click', (e) => {
   booklist.style.display = 'none';
   heading.style.display = 'none';
 });
+
+const date = document.getElementById('date')
+date.innerHTML = new Date().toLocaleString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric',
+  hour12: true
+});
