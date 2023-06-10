@@ -1,72 +1,120 @@
-// book classes
-class BookCollection {
-  constructor() {
-    this.books = [];
-    this.bookList = document.getElementById('book-list');
-    this.addBookForm = document.getElementById('add-book-form');
-    this.titleInput = document.getElementById('title-input');
-    this.authorInput = document.getElementById('author-input');
-
-    this.addBookForm.addEventListener('submit', this.handleAddBook.bind(this));
-    this.getFromLocalStorage();
-    this.renderBookList();
+// Book class
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
 
-  handleAddBook(event) {
-    event.preventDefault();
-    const title = this.titleInput.value;
-    const author = this.authorInput.value;
-    this.addBook(title, author);
-    this.renderBookList();
-    this.resetForm();
-  }
+  static displayBooks() {
+    const books = JSON.parse(localStorage.getItem('books')) || [];
+    const bookList = document.getElementById('book-list');
+    bookList.innerHTML = '';
 
-  addBook(title, author) {
-    this.books.push({ title, author });
-    this.updateLocalStorage();
-  }
-
-  removeBook(index) {
-    this.books = this.books.filter((book, i) => i !== index);
-    this.updateLocalStorage();
-  }
-
-  renderBookList() {
-    this.bookList.innerHTML = '';
-    this.books.forEach((book, index) => {
-      const li = document.createElement('p');
-      li.innerHTML = `"${book.title}" by ${book.author} <br> `;
-      this.bookList.appendChild(li);
-      li.dataset.index = index;
-
-      const removeButton = document.createElement('button');
-      removeButton.innerHTML = 'Remove';
-      removeButton.addEventListener('click', () => {
-        const index = parseInt(li.dataset.index, 10);
-        this.removeBook(index);
-        this.renderBookList();
-      });
-      li.appendChild(removeButton);
-      if (index % 2 === 1) {
-        li.classList.add('white');
-      }
+    books.forEach((book) => {
+      const bookElement = document.createElement('div');
+      bookElement.classList.add('book');
+      bookElement.innerHTML = `
+          <div>
+          <span><strong>Title:</strong> ${book.title}</span>
+          <span><strong>Author:</strong> ${book.author}</span>
+          </div>
+          <button class="delete">Remove</button>
+        `;
+      bookList.appendChild(bookElement);
     });
   }
 
-  resetForm() {
-    this.addBookForm.reset();
+  static addBook() {
+    const titleInput = document.getElementById('titleInput');
+    const authorInput = document.getElementById('authorInput');
+    const title = titleInput.value.trim();
+    const author = authorInput.value.trim();
+
+    const book = new Book(title, author);
+    Book.saveBook(book);
+    Book.displayBooks();
+    titleInput.value = '';
+    authorInput.value = '';
   }
 
-  updateLocalStorage() {
-    localStorage.setItem('books', JSON.stringify(this.books));
-  }
-
-  getFromLocalStorage() {
-    const storedBooks = localStorage.getItem('books');
-    if (storedBooks !== null) {
-      this.books = JSON.parse(storedBooks);
+  static removeBook(target) {
+    if (target.classList.contains('delete')) {
+      const bookElement = target.parentElement;
+      const title = bookElement.querySelector('span:first-child').textContent.split(': ')[1];
+      const author = bookElement.querySelector('span:nth-child(2)').textContent.split(': ')[1];
+      const book = new Book(title, author);
+      Book.deleteBook(book);
+      Book.displayBooks();
     }
   }
+
+  static saveBook(book) {
+    const books = JSON.parse(localStorage.getItem('books')) || [];
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static deleteBook(book) {
+    let books = JSON.parse(localStorage.getItem('books')) || [];
+    books = books.filter((currentBook) => !(currentBook.title === book.title
+   && currentBook.author === book.author));
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static init() {
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', Book.displayBooks);
+
+    const addBookForm = document.getElementById('addBookForm');
+    addBookForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      Book.addBook();
+    });
+
+    const bookList = document.getElementById('book-list');
+    bookList.addEventListener('click', (e) => {
+      Book.removeBook(e.target);
+    });
+
+    const list = document.getElementById('list');
+    list.addEventListener('click', (e) => {
+      e.preventDefault();
+      const booklist = document.querySelector('#book-list');
+      const addBookForm = document.querySelector('#addBookForm');
+      const contact = document.querySelector('.contact');
+      const heading = document.querySelector('#heading1');
+      booklist.style.display = 'block';
+      addBookForm.style.display = 'none';
+      heading.style.display = 'block';
+      contact.style.display = 'none';
+    });
+
+    const add = document.getElementById('add');
+    add.addEventListener('click', (e) => {
+      e.preventDefault();
+      const addBookForm = document.querySelector('#addBookForm');
+      const heading = document.querySelector('#heading1');
+      const contact = document.querySelector('.contact');
+      addBookForm.style.display = 'flex';
+      const booklist = document.querySelector('#book-list');
+      booklist.style.display = 'none';
+      contact.style.display = 'none';
+      heading.style.display = 'none';
+    });
+
+    const contactBtn = document.getElementById('contact');
+    contactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const addBookForm = document.querySelector('#addBookForm');
+      const heading = document.querySelector('#heading1');
+      const contactDiv = document.querySelector('.contact');
+      addBookForm.style.display = 'none';
+      const booklist = document.querySelector('#book-list');
+      contactDiv.style.display = 'flex';
+      booklist.style.display = 'none';
+      heading.style.display = 'none';
+    });
+  }
 }
-const bookCollection = new BookCollection();
-bookCollection.resetForm();
+
+Book.init();
